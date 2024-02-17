@@ -3,17 +3,18 @@ plugins {
     id("org.jetbrains.kotlin.android")
     id ("androidx.navigation.safeargs")
     id ("kotlin-parcelize")
-    id ("kotlin-kapt")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
-
+apply(from = "../shared_dependencies.gradle")
 android {
     namespace = "com.ashoka.capstonedicoding"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.ashoka.capstonedicoding"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -30,16 +31,23 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "18"
     }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
+    }
+
     dynamicFeatures += setOf(":favorite")
 }
 
 dependencies {
+    implementation(project(":core"))
 
     implementation("androidx.core:core-ktx:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
@@ -49,11 +57,9 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    implementation(":core")
+    implementation ("com.google.dagger:hilt-android:2.48.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.48.1")
 
-    // Navigation
-    implementation ("androidx.navigation:navigation-fragment-ktx:2.7.6")
-    implementation ("androidx.navigation:navigation-ui-ktx:2.7.6")
-
+//    implementation("com.gauravk.bubblenavigation:bubblenavigation:1.0.7")
 
 }

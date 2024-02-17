@@ -1,11 +1,14 @@
 plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
+    id ("kotlin-parcelize")
+    id("com.google.dagger.hilt.android")
+    id("com.google.devtools.ksp")
 }
-
+apply(from = "../shared_dependencies.gradle")
 android {
     namespace = "com.ashoka.core"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         minSdk = 24
@@ -24,11 +27,16 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_18
+        targetCompatibility = JavaVersion.VERSION_18
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "18"
+    }
+
+    buildFeatures {
+        viewBinding = true
+        buildConfig = true
     }
 }
 
@@ -41,24 +49,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
 
-    // Glide
-    implementation ("com.github.bumptech.glide:glide:4.16.0")
-
-    // Retrofit
-    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-
-    // OkHttp
-    implementation ("com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.2")
-    implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
-
-    // CircleImageView
-    implementation ("de.hdodenhof:circleimageview:3.1.0")
-
-    // ViewModel Delegate
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
-
-    // ViewBinding Delegate
-    implementation ("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9")
+    implementation ("com.google.dagger:hilt-android:2.48.1")
+    ksp("com.google.dagger:hilt-android-compiler:2.48.1")
 
 }

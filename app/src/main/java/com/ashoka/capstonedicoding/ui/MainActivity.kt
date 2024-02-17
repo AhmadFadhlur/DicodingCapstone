@@ -1,8 +1,11 @@
-package com.ashoka.capstonedicoding
+package com.ashoka.capstonedicoding.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.ashoka.capstonedicoding.R
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

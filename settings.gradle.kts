@@ -17,3 +17,4 @@ rootProject.name = "CapstoneDicoding"
 include(":app")
 include(":core")
 include(":favorite")
+include("shared_dependencies")
