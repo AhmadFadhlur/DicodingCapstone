@@ -1,6 +1,7 @@
 package com.ashoka.core.adapter
 
 import android.graphics.drawable.Drawable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.ViewGroup
@@ -38,13 +39,15 @@ class MovieAdapter() : PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolde
     }
 
     class ViewHolder(private val binding:ListMovieBinding): RecyclerView.ViewHolder(binding.root){
+
         fun bind(item: ResultMovieItem) = with(binding){
             title.text = item.title.toString()
+            Log.d("ViewHoldermovieAdapter fun bind", "item title = ${item.title}")
             tvOriginTitle.text = item.originalTitle.toString()
             tvDate.text = item.releaseDate.toString()
             popularity.text = itemView.context.getString(R.string.popularity_d, item.popularity.toString())
             userScore.text = item.voteCount.toString()
-            Glide.with(itemView.context).load("$IMAGE_BASE_URL ${item.posterPath}").listener(
+            Glide.with(itemView.context).load("$IMAGE_BASE_URL${item.posterPath}").listener(
                 object : RequestListener<Drawable>{
                     override fun onLoadFailed(
                         e: GlideException?,
@@ -69,12 +72,16 @@ class MovieAdapter() : PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolde
 
                 }
             ).into(imgPoster)
+            root.setOnClickListener {
+
+            }
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        Log.d("onBindViewHolder", "holder = ${holder}")
         val data = getItem(position)
-        if (data != null) holder.bind(data)    }
+        if (data != null) holder.bind(data)  else Log.d("onBindViewHolder", "data = null")  }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ListMovieBinding.inflate(LayoutInflater.from(parent.context), parent,false))

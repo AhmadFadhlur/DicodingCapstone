@@ -10,7 +10,8 @@ interface DiscoverRepository {
         token:String,
         adultStatus:Boolean,
         videoStatus:Boolean,
-        language:String) : Flow<PagingData<ResultMovieItem>>
+        language:String,
+        sortBy : String) : Flow<PagingData<ResultMovieItem>>
 
 
 }

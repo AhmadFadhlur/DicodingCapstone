@@ -2,6 +2,7 @@ package com.ashoka.core.data.remote.network
 
 import com.ashoka.core.data.remote.response.MovieDetailResponse
 import com.ashoka.core.data.remote.response.MovieDiscoverResponse
+import com.ashoka.core.data.remote.response.MovieSearchResponse
 import com.ashoka.core.utils.EndPointMovie.DETAIL_MOVIE
 import com.ashoka.core.utils.EndPointMovie.MOVIE
 import com.ashoka.core.utils.EndPointMovie.SEARCH_MOVIE
@@ -39,7 +40,7 @@ interface ApiSearchMoviesService{
         @Query("include_adult") adultStatus : Boolean,
         @Query("language") language : String,
         @Query("page") page : Int
-    ) : MovieDetailResponse
+    ) : MovieSearchResponse
 
 }
 

@@ -2,6 +2,7 @@ plugins {
     id("com.android.library")
     id("org.jetbrains.kotlin.android")
     id ("kotlin-parcelize")
+    id ("androidx.navigation.safeargs")
     id("com.google.dagger.hilt.android")
     id("com.google.devtools.ksp")
 }
@@ -37,6 +38,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        dataBinding = true
     }
 }
 

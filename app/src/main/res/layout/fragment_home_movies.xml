@@ -6,61 +6,104 @@
     android:layout_height="match_parent"
     tools:context=".ui.homepage.HomeMoviesFragment">
 
+<!--    <com.google.android.material.appbar.AppBarLayout-->
+<!--        android:id="@+id/appBar"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        app:layout_constraintTop_toTopOf="parent">-->
+
+<!--        <com.google.android.material.appbar.CollapsingToolbarLayout-->
+<!--            android:id="@+id/collapsingToolbar"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:background="?attr/colorPrimaryVariant"-->
+<!--            app:layout_scrollFlags="scroll|enterAlways"-->
+<!--            app:toolbarId="@+id/toolbar">-->
+
+<!--            <LinearLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="124dp"-->
+<!--                android:background="?attr/colorSecondaryVariant"-->
+<!--                android:orientation="vertical">-->
+
+<!--                <com.google.android.material.appbar.MaterialToolbar-->
+<!--                    android:id="@+id/toolbar"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="?attr/actionBarSize">-->
+
+<!--                    <TextView-->
+<!--                        android:id="@+id/ivLogoText"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="wrap_content"-->
+<!--                        android:contentDescription="@null"-->
+<!--                        android:text="Movie-in aja"-->
+<!--                         />-->
+
+<!--                </com.google.android.material.appbar.MaterialToolbar>-->
+
+<!--                <View-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="1dp"-->
+<!--                    android:background="@drawable/toolbar_dropshadow" />-->
+
+<!--                <androidx.appcompat.widget.SearchView-->
+<!--                    android:id="@+id/searchVie"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginHorizontal="16dp"-->
+<!--                    android:background="@drawable/bg_frame"-->
+<!--                    android:queryBackground="@android:color/transparent"-->
+<!--                    app:iconifiedByDefault="false"-->
+<!--                    app:queryBackground="@android:color/transparent"-->
+<!--                    app:queryHint="Search moview" />-->
+
+<!--            </LinearLayout>-->
+<!--        </com.google.android.material.appbar.CollapsingToolbarLayout>-->
+<!--    </com.google.android.material.appbar.AppBarLayout>-->
+    
     <com.google.android.material.appbar.AppBarLayout
         android:id="@+id/appBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent">
-
-        <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/collapsingToolbar"
+        <FrameLayout
+            android:id="@+id/toolbar_container"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="?attr/colorPrimaryVariant"
-            app:layout_scrollFlags="scroll|enterAlways"
-            app:toolbarId="@+id/toolbar">
-
-            <LinearLayout
+            android:layout_height="wrap_content">
+            
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="124dp"
-                android:background="?attr/colorSecondaryVariant"
-                android:orientation="vertical">
+                android:layout_height="wrap_content"
+                app:popupTheme="@style/AppTheme.PopupOverlay"
+                android:background="@color/primaryColor"
+                />
 
-                <com.google.android.material.appbar.MaterialToolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="?attr/actionBarSize">
+            <androidx.appcompat.widget.SearchView
+                android:id="@+id/searchView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:background="@drawable/bg_frame"
+                android:queryBackground="@android:color/transparent"
+                app:iconifiedByDefault="false"
+                app:queryBackground="@android:color/transparent"
+                app:queryHint="Search moview"
+                />
 
-                    <TextView
-                        android:id="@+id/ivLogoText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:contentDescription="@null"
-                        android:text="Movie-in aja"
-                         />
+<!--            <com.ferfalk.simplesearchview.SimpleSearchView-->
+<!--                android:id="@+id/searchView"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:background="@color/purple_200"-->
+<!--                android:hint="search"/>-->
 
-                </com.google.android.material.appbar.MaterialToolbar>
+        </FrameLayout>
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:background="@drawable/toolbar_dropshadow" />
-
-                <androidx.appcompat.widget.SearchView
-                    android:id="@+id/searchVie"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@drawable/bg_frame"
-                    android:queryBackground="@android:color/transparent"
-                    app:iconifiedByDefault="false"
-                    app:queryBackground="@android:color/transparent"
-                    app:queryHint="Search moview" />
-
-            </LinearLayout>
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
     </com.google.android.material.appbar.AppBarLayout>
 
+    
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_moviesHome"
         android:layout_width="409dp"

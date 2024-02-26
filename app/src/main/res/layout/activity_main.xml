@@ -18,6 +18,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:navGraph="@navigation/main_navigation" />
 
+
     <io.ak1.BubbleTabBar
         android:id="@+id/bubbleTabBar"
         android:layout_width="match_parent"
@@ -25,7 +26,7 @@
         android:background="#FFF"
         android:elevation="16dp"
         android:padding="7dp"
-        app:bubbletab_menuResource="@menu/menu"
+        app:bubbletab_menuResource="@menu/menu_navigation_home"
         app:bubbletab_disabled_icon_color="#412661"
         app:bubbletab_horizontal_padding="20dp"
         app:bubbletab_icon_size="20dp"

@@ -10,7 +10,7 @@ dependencies {
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
 
     // OkHttp
-    implementation ("com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.2")
+    implementation (platform("com.squareup.okhttp3:okhttp-bom:5.0.0-alpha.2"))
     implementation ("com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.2")
 
     // CircleImageView
@@ -39,6 +39,14 @@ dependencies {
     // rounded image
     implementation ("com.makeramen:roundedimageview:2.3.0")
 
+    // bubble navigation
     implementation  ("io.ak1:bubbletabbar:1.0.8")
+
+    //simple SearchView
+    implementation ("com.github.Ferfalk:SimpleSearchView:0.2.1")
+
+    //kenburnView
+    implementation ("com.flaviofaria:kenburnsview:1.0.7")
+
 
 }
