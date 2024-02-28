@@ -1,6 +1,6 @@
 package com.ashoka.core.data.remote.repository.detail
 
-import com.ashoka.core.data.Resource
+import com.ashoka.core.data.resource.Resource
 import com.ashoka.core.data.remote.response.MovieDiscoverResponse
 import kotlinx.coroutines.flow.Flow
 

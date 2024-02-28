@@ -31,7 +31,7 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
         super.onViewCreated(view, savedInstanceState)
         setMovieAdapter()
         observeDiscoverMovie()
-        setSearcView()
+//        setSearcView()
 
 
     }
@@ -47,33 +47,33 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
 
     }
 
-    private fun setSearcView() = with(binding){
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (!query.isNullOrEmpty()) { onStartQuery(query)
-                    Log.d("setSearcView() if = true", "query = $query}")
-                } else observeDiscoverMovie()
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                Log.d("setSearcView() txt chng", "query = $newText}")
-                if (newText.isNullOrEmpty()) observeDiscoverMovie()
-                return true
-            }
-
-        })
-    }
-    private fun onStartQuery(query: String) {
-        Log.d("onStartQuery()", "query = $query")
-        homeMoviesViewModel.getSearchMovies(
-            token = "Bearerawr $TOKEN",
-            q = query,
-            adultStatus = false,
-            language = "en-US"
-        )
-        observeSearchQuery()
-    }
+//    private fun setSearcView() = with(binding){
+//        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener{
+//            override fun onQueryTextSubmit(query: String?): Boolean {
+//                if (!query.isNullOrEmpty()) { onStartQuery(query)
+//                    Log.d("setSearcView() if = true", "query = $query}")
+//                } else observeDiscoverMovie()
+//                return true
+//            }
+//
+//            override fun onQueryTextChange(newText: String?): Boolean {
+//                Log.d("setSearcView() txt chng", "query = $newText}")
+//                if (newText.isNullOrEmpty()) observeDiscoverMovie()
+//                return true
+//            }
+//
+//        })
+//    }
+//    private fun onStartQuery(query: String) {
+//        Log.d("onStartQuery()", "query = $query")
+//        homeMoviesViewModel.getSearchMovies(
+//            token = "Bearerawr $TOKEN",
+//            q = query,
+//            adultStatus = false,
+//            language = "en-US"
+//        )
+//        observeSearchQuery()
+//    }
 
     private fun observeSearchQuery() = with(binding){
         lifecycleScope.launchWhenStarted {
