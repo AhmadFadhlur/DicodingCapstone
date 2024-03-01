@@ -18,7 +18,7 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
-class MovieAdapter() : PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolder>(callback){
+class MovieAdapter(var onClickItem: ((ResultMovieItem) -> Unit?)? = null) : PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolder>(callback){
 
     companion object {
         val callback = object : DiffUtil.ItemCallback<ResultMovieItem>() {
@@ -72,16 +72,21 @@ class MovieAdapter() : PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolde
 
                 }
             ).into(imgPoster)
-            root.setOnClickListener {
 
-            }
         }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         Log.d("onBindViewHolder", "holder = ${holder}")
         val data = getItem(position)
-        if (data != null) holder.bind(data)  else Log.d("onBindViewHolder", "data = null")  }
+        if (data != null) holder.bind(data)  else Log.d("onBindViewHolder", "data = null")
+
+        holder.itemView.setOnClickListener {
+            if (data != null) {
+                onClickItem?.invoke(data)
+            }
+        }
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(ListMovieBinding.inflate(LayoutInflater.from(parent.context), parent,false))

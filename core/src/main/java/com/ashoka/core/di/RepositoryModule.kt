@@ -1,6 +1,6 @@
 package com.ashoka.core.di
 
-import com.ashoka.core.data.remote.repository.discover.MovieRepositoryImpl
+import com.ashoka.core.data.remote.repository.MovieRepositoryImpl
 import com.ashoka.core.domain.repository.IMovieRepository
 import dagger.Binds
 import dagger.Module

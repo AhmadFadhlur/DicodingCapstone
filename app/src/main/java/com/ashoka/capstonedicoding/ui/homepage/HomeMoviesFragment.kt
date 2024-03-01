@@ -9,8 +9,10 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
+import com.ashoka.capstonedicoding.BuildConfig
 import com.ashoka.capstonedicoding.R
 import com.ashoka.capstonedicoding.adapter.LoadingStateMovieAdapter
 import com.ashoka.capstonedicoding.databinding.FragmentHomeMoviesBinding
@@ -31,20 +33,22 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
         super.onViewCreated(view, savedInstanceState)
         setMovieAdapter()
         observeDiscoverMovie()
-//        setSearcView()
-
-
+    //        setSearcView()
     }
 
 
     private fun setMovieAdapter() = with(binding){
-        movieAdapter = MovieAdapter()
+        movieAdapter = MovieAdapter{
+            val directions = HomeMoviesFragmentDirections.actionMainNavigationToDetailMoviesFragment().apply {
+                this.id = it.id!!
+            }
+            findNavController().navigate(directions)
+        }
         rvMoviesHome.layoutManager =  LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         Log.d("setMovieAdapter()", "movieAdapter = $movieAdapter}")
         rvMoviesHome.adapter = movieAdapter.withLoadStateFooter(
             footer = LoadingStateMovieAdapter {movieAdapter.retry()}
         )
-
     }
 
 //    private fun setSearcView() = with(binding){
@@ -85,10 +89,11 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
         }
     }
 
+
     private fun observeDiscoverMovie() = with(binding){
         Log.d("observeDiscoverMovie()", "masuk sini")
         homeMoviesViewModel.getDiscoverMovies(
-            token = "Bearer $TOKEN",
+            token = "Bearer ${BuildConfig.API_KEY}",
             adultStatus = false,
             videoStatus = false,
             language = "en-US",
@@ -101,9 +106,7 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
             homeMoviesViewModel.discoverMovies.collectLatest {
                 Log.d("collectLatest{", "paging data = $it}")
                 movieAdapter.submitData(it)
-
             }
         }
     }
-
 }

@@ -24,6 +24,11 @@
     <color name="pink_color">#E33D94</color>
     <color name="purple_color">#9B59B6</color>
 
+    <color name="blue_basebg_movie">#120820</color>
+    <color name="blue_primary_movie">#3887BE</color>
+    <color name="blue_secondary_movie">#38419D</color>
+    <color name="blue_text_movie">#38419D</color>
+
     <color name="blue_transparent">#261DA1F2</color>
     <color name="purple_transparent">#264D6EE3</color>
     <color name="green_transparent">#B36FCF97</color>

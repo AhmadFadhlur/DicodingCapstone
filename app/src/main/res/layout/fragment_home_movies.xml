@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/blue_basebg_movie"
     tools:context=".ui.homepage.HomeMoviesFragment">
 
 <!--    <com.google.android.material.appbar.AppBarLayout-->
@@ -76,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:popupTheme="@style/AppTheme.PopupOverlay"
-                android:background="@color/primaryColor"
+                android:background="@color/blue_basebg_movie"
                 />
 
             <androidx.appcompat.widget.SearchView

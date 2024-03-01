@@ -4,14 +4,14 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primaryColor"
+    android:background="@color/blue_basebg_movie"
     tools:context=".ui.details.DetailMoviesFragment">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/share"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -48,7 +48,7 @@
                         android:layout_height="match_parent">
 
                         <TextView
-                            android:id="@+id/titleDetail"
+                            android:id="@+id/tv_titleDetail"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
@@ -76,18 +76,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/roundedImageView" />
 
-                        <TextView
-                            android:id="@+id/userScore"
-                            android:layout_width="48dp"
-                            android:layout_height="48dp"
-                            android:layout_marginTop="16dp"
-                            android:layout_marginEnd="16dp"
-                            android:background="@drawable/background_user_score"
-                            android:gravity="center"
-                            android:text="dummyUserScore"
-                            android:textColor="@color/white"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+
 
                         <ImageButton
                             android:id="@+id/backButton"
@@ -134,7 +123,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:backgroundTint="@color/blue_color"
+                android:backgroundTint="@color/blue_primary_movie"
                 android:contentDescription="favorite"
                 android:src="@drawable/ic_fav_border"
                 android:tint="@color/white"
@@ -156,6 +145,44 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/subPoster" />
 
+            <TextView
+                android:id="@+id/tv_genre1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="genre1"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@id/subPoster"
+                app:layout_constraintTop_toBottomOf="@id/topBarCardView"
+                />
+
+            <TextView
+                android:id="@+id/tv_genre2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="genre2"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@id/tv_genre1"
+                app:layout_constraintTop_toBottomOf="@id/topBarCardView"
+                />
+
+            <TextView
+                android:id="@+id/tv_genre3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="genre3"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textColor="@color/white"
+                app:layout_constraintStart_toEndOf="@id/tv_genre2"
+                app:layout_constraintTop_toBottomOf="@id/topBarCardView"
+                />
+
+
+
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/dividerBody"
                 android:layout_width="100dp"
@@ -163,13 +190,13 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:scaleType="centerCrop"
-                android:src="@color/blue_color"
+                android:src="@color/blue_primary_movie"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/titleOverview"
                 app:riv_corner_radius="2dp" />
 
             <TextView
-                android:id="@+id/overview"
+                android:id="@+id/tv_overview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -183,18 +210,18 @@
 
 
             <TextView
-                android:id="@+id/title_popularity"
+                android:id="@+id/tv_release_date"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="16dp"
-                android:text="popularity"
+                android:text="Release Date"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/overview" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_overview" />
 
 
             <com.makeramen.roundedimageview.RoundedImageView
@@ -204,9 +231,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="4dp"
                 android:scaleType="centerCrop"
-                android:src="@color/blue_color"
+                android:src="@color/blue_primary_movie"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/title_popularity"
+                app:layout_constraintTop_toBottomOf="@+id/tv_release_date"
                 app:riv_corner_radius="2dp" />
 
             <TextView
@@ -216,7 +243,7 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
-                android:text="@string/popularity_d"
+                android:text="dummy date"
                 android:textColor="@color/white"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -227,19 +254,6 @@
 
     </androidx.core.widget.NestedScrollView>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/share"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="share"
-        android:textSize="20sp"
-        android:textColor="@color/white"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="8dp"
-        android:backgroundTint="@color/blue_color"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
