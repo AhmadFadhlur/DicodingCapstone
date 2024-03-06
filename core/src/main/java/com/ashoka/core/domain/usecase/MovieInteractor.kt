@@ -6,6 +6,7 @@ import com.ashoka.core.data.remote.response.MovieDetailResponse
 import com.ashoka.core.data.remote.response.ResultMovieItem
 import com.ashoka.core.data.resource.Resource
 import com.ashoka.core.domain.model.DetailMovie
+import com.ashoka.core.domain.model.Movie
 import com.ashoka.core.domain.repository.IMovieRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
@@ -29,5 +30,16 @@ class MovieInteractor @Inject constructor(
     ): Flow<Resource<DetailMovie>>  =
         movieRepository.detailMovie(token, movieId, language)
 
+    override  fun getMoviesFavorite(): Flow<List<Movie>> =
+        movieRepository.getMoviesFavorite()
+
+    override  fun getMovieFavoriteById(id: Int): Flow<Boolean> =
+        movieRepository.getMovieFavoriteById(id)
+
+    override suspend fun insertMovie(movie: Movie) =
+        movieRepository.insertMovie(movie)
+
+    override suspend fun deleteMovie(movie: Movie) =
+        movieRepository.deleteMovie(movie)
 
 }

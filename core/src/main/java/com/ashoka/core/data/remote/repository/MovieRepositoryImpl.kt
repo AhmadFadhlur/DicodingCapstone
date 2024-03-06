@@ -2,21 +2,23 @@ package com.ashoka.core.data.remote.repository
 
 import androidx.paging.PagingData
 import com.ashoka.core.data.remote.response.MovieDetailResponse
-import com.ashoka.core.data.remote.response.MovieDiscoverResponse
 import com.ashoka.core.data.remote.response.ResultMovieItem
 import com.ashoka.core.data.resource.ApiSourceResponse
 import com.ashoka.core.data.resource.NetworkBoundResource
-import com.ashoka.core.data.resource.RemoteDataSource
+import com.ashoka.core.data.remote.RemoteDataSource
+import com.ashoka.core.data.remote.RemoteLocalSource
 import com.ashoka.core.data.resource.Resource
 import com.ashoka.core.domain.model.DetailMovie
+import com.ashoka.core.domain.model.Movie
 import com.ashoka.core.domain.repository.IMovieRepository
 import com.ashoka.core.utils.DataMapper
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class MovieRepositoryImpl @Inject constructor(
-    private val remoteDataSource: RemoteDataSource
+    private val remoteDataSource: RemoteDataSource,
+    private val localDataSource: RemoteLocalSource
 ) : IMovieRepository{
     override suspend fun discoverMovie(
         token: String,
@@ -39,5 +41,19 @@ class MovieRepositoryImpl @Inject constructor(
             remoteDataSource.getDetailMovie(token, movieId, language)
 
     }.asFlow()
+
+    override fun getMoviesFavorite(): Flow<List<Movie>> =
+        localDataSource.getMoviesFavorite().map {
+            DataMapper.mapListEntityFavToDomain(it)
+        }
+
+     override fun getMovieFavoriteById(id: Int): Flow<Boolean> =
+         localDataSource.getMovieFavoriteById(id)
+
+    override suspend fun insertMovie(movie: Movie) =
+        localDataSource.insertMovie(DataMapper.mapMovieDomainToEntity(movie))
+
+    override suspend fun deleteMovie(movie: Movie) =
+        localDataSource.deleteMovie(DataMapper.mapMovieDomainToEntity(movie))
 
 }

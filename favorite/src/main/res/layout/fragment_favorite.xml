@@ -5,24 +5,10 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/blue_basebg_movie"
-    tools:context=".ui.setting.SettingFragment">
-
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="INI SETTING FRAGMENT" />
+    tools:context=".ui.FavoriteFragment">
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_favMovie"
-        android:layout_width="409dp"
-        android:layout_height="729dp"
-        app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="8dp"
-        tools:listitem="@layout/list_favorite_movie"
-        app:layout_constraintTop_toTopOf="parent"
-        />
+
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_todetail"
         android:layout_width="wrap_content"
@@ -33,5 +19,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_favMovie"
+        android:layout_width="409dp"
+        android:layout_height="729dp"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="8dp"
+        tools:listitem="@layout/list_favorite_movie"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

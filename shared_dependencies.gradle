@@ -49,4 +49,17 @@ dependencies {
     implementation ("com.flaviofaria:kenburnsview:1.0.7")
 
 
+    //Room
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
+    // optional - Kotlin Extensions and Coroutines support for Room
+    implementation("androidx.room:room-ktx:2.6.1")
+
+    //Sql Chiper
+    implementation ("net.zetetic:android-database-sqlcipher:4.5.3")
+    implementation ("androidx.sqlite:sqlite:2.4.0")
+
+
+
 }

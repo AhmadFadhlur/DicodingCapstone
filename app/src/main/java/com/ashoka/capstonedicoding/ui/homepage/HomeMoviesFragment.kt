@@ -2,11 +2,8 @@ package com.ashoka.capstonedicoding.ui.homepage
 
 import android.os.Bundle
 import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
 import androidx.fragment.app.Fragment
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -17,8 +14,6 @@ import com.ashoka.capstonedicoding.R
 import com.ashoka.capstonedicoding.adapter.LoadingStateMovieAdapter
 import com.ashoka.capstonedicoding.databinding.FragmentHomeMoviesBinding
 import com.ashoka.core.adapter.MovieAdapter
-import com.ashoka.core.utils.EndPointMovie.TOKEN
-import com.ferfalk.simplesearchview.SimpleSearchView
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 
@@ -98,10 +93,6 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
             videoStatus = false,
             language = "en-US",
             sortBy = "popularity.desc")
-
-//        homeMoviesViewModel.discoverMovies.flowWithLifecycle(viewLifecycleOwner.lifecycle, Lifecycle.State.STARTED)
-//            .onEach(movieAdapter::submitData).launchIn(viewLifecycleOwner.lifecycleScope)
-
         lifecycleScope.launchWhenStarted {
             homeMoviesViewModel.discoverMovies.collectLatest {
                 Log.d("collectLatest{", "paging data = $it}")

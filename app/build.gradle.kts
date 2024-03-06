@@ -65,6 +65,8 @@ dependencies {
     implementation ("com.github.muhrafitriandi:android-stepper:1.0.0")
 
 
+    //room
+    ksp("androidx.room:room-compiler:2.6.1")
 
 //    implementation("com.gauravk.bubblenavigation:bubblenavigation:1.0.7")
 

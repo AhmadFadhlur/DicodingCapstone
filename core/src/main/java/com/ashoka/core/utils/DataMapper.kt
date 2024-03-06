@@ -1,31 +1,68 @@
 package com.ashoka.core.utils
 
+import com.ashoka.core.data.local.entities.FavoriteMovieEntity
 import com.ashoka.core.data.remote.response.MovieDetailResponse
 import com.ashoka.core.domain.model.DetailMovie
 import com.ashoka.core.domain.model.GenreMovie
+import com.ashoka.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOf
 
 object DataMapper {
 
     fun mapDetailResponseToDomain(movieDetailResponse: MovieDetailResponse)
-    : Flow<DetailMovie> = flow {
-        movieDetailResponse.let { movieDetail ->
-                    DetailMovie(
-                        id = movieDetail.id!!,
-                        backdropPath = movieDetail.backdropPath!!,
-                        originalTitle = movieDetail.originalTitle!!,
-                        title = movieDetail.title!!,
-                        genres = movieDetail.genres!!.map {
-                            GenreMovie(it!!.name!!, it.id!!)
-                        },
-                        popularity = movieDetail.popularity!!,
-                        overview = movieDetail.overview!!,
-                        posterPath = movieDetail.posterPath!!,
-                        releaseDate = movieDetail.releaseDate!!,
-                        voteAverage = movieDetail.voteAverage!!,
-                        homepage = movieDetail.homepage!!
-                    )
+    : Flow<DetailMovie> = flowOf(
+        DetailMovie(
+            id = movieDetailResponse.id!!,
+            backdropPath = movieDetailResponse.backdropPath!!,
+            originalTitle = movieDetailResponse.originalTitle!!,
+            title = movieDetailResponse.title!!,
+            genres = movieDetailResponse.genres!!.map {
+                GenreMovie(it!!.name!!, it.id!!)
+            },
+            popularity = movieDetailResponse.popularity!!.toString(),
+            overview = movieDetailResponse.overview!!,
+            posterPath = movieDetailResponse.posterPath!!,
+            releaseDate = movieDetailResponse.releaseDate!!,
+            voteAverage = movieDetailResponse.voteAverage!!.toString(),
+            homepage = movieDetailResponse.homepage!!
+        )
+    )
+
+    fun mapDetailDomaintoMovieDomain(detailMovie: DetailMovie) : Movie =
+        Movie(
+            id = detailMovie.id,
+            posterPath = detailMovie.posterPath,
+            title = detailMovie.title,
+            originalTitle = detailMovie.originalTitle,
+            popularity = detailMovie.popularity,
+            releaseDate = detailMovie.releaseDate
+        )
+    fun mapMovieDomainToEntity(movie: Movie)
+    : FavoriteMovieEntity =
+        FavoriteMovieEntity(
+            id = movie.id,
+            posterPath = movie.posterPath,
+            title = movie.title,
+            originalTitle = movie.originalTitle,
+            popularity = movie.popularity,
+            releaseDate = movie.releaseDate
+        )
+
+    fun mapListEntityFavToDomain(movie: List<FavoriteMovieEntity>) : List<Movie> {
+        val listFavMovie = ArrayList<Movie>()
+        movie.map {
+            val movie = Movie(
+                id = it.id,
+                posterPath = it.posterPath,
+                title = it.title,
+                originalTitle = it.originalTitle,
+                popularity = it.popularity,
+                releaseDate = it.releaseDate
+            )
+            listFavMovie.add(movie)
         }
+        return listFavMovie
     }
 }

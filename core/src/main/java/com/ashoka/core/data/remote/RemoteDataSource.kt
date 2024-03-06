@@ -1,19 +1,20 @@
-package com.ashoka.core.data.resource
+package com.ashoka.core.data.remote
 
 import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import com.ashoka.core.data.remote.network.ApiDetailMoviesService
 import com.ashoka.core.data.remote.network.ApiDiscoverMovieService
 import com.ashoka.core.data.remote.network.ApiSearchMoviesService
 import com.ashoka.core.data.remote.paging.MovieDiscoverPagingSource
 import com.ashoka.core.data.remote.response.MovieDetailResponse
-import com.ashoka.core.data.remote.response.MovieDiscoverResponse
 import com.ashoka.core.data.remote.response.ResultMovieItem
+import com.ashoka.core.data.resource.ApiSourceResponse
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -47,5 +48,5 @@ class RemoteDataSource @Inject constructor(
              e.printStackTrace()
              Log.e("REMOTE_DATA_SOURCE", e.toString())
          }
-    }
+    }.flowOn(Dispatchers.IO)
 }

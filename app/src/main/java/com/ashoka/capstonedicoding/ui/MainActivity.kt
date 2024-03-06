@@ -11,6 +11,7 @@ import com.ashoka.capstonedicoding.R
 import com.ashoka.capstonedicoding.databinding.ActivityMainBinding
 import com.ashoka.capstonedicoding.ui.homepage.HomeMoviesFragment
 import com.ashoka.capstonedicoding.utils.False
+import com.ashoka.capstonedicoding.utils.True
 import com.ashoka.capstonedicoding.utils.onNavDestinationSelected
 import com.ashoka.capstonedicoding.utils.setVisibleOrGone
 import dagger.hilt.android.AndroidEntryPoint
@@ -24,16 +25,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
-
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.navHostContainer) as NavHostFragment
         navController = navHostFragment.navController
 
-        binding.bubbleTabBar.addBubbleListener{ id ->
-            onNavDestinationSelected(id,navController)
-        }
+        binding.bubbleTabBar.addBubbleListener{ id -> onNavDestinationSelected(id,navController) }
 
         navController.addOnDestinationChangedListener{_, destination, _ ->
+            when(destination.id){
+                R.id.detailMoviesFragment -> binding.bubbleTabBar.setVisibleOrGone(Boolean.False)
+
+                else -> binding.bubbleTabBar.setVisibleOrGone(Boolean.True)
+            }
             binding.bubbleTabBar.setSelectedWithId(destination.id, false)
         }
     }
@@ -45,5 +47,4 @@ class MainActivity : AppCompatActivity() {
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
             .commit()
     }
-
 }
