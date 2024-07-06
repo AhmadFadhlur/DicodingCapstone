@@ -22,17 +22,14 @@ dependencies {
     implementation("androidx.navigation:navigation-dynamic-features-fragment:2.7.7")
 
     // ViewModel Delegate
-    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.5.1")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.3")
 
     // ViewBinding Delegate
     implementation ("com.github.kirich1409:viewbindingpropertydelegate-noreflection:1.5.9")
 
-//     Dagger Hilt
-//    implementation ("com.google.dagger:hilt-android:2.48.1")
-//    ksp("com.google.dagger:hilt-android-compiler:2.48.1")
 
     // Paging
-    implementation ("androidx.paging:paging-runtime-ktx:3.2.1")
+    implementation ("androidx.paging:paging-runtime-ktx:3.3.0")
 
     // facebook Shimmer
     implementation ("com.facebook.shimmer:shimmer:0.5.0")
