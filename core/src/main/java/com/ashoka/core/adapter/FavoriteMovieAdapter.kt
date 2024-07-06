@@ -85,14 +85,15 @@ class FavoriteMovieAdapter(var onClickItem: ((Movie) -> Unit?)? = null)
 
                     }
                 )
-                .into(imgPoster)
+                .into(imgPosterFavorite)
+            Log.i("onBindViewHolder", "img link = ${EndPointMovie.IMAGE_BASE_URL}${dataMovie.posterPath}")
             popularity.text= dataMovie.popularity
             tvTittleFav.text = dataMovie.title
             tvDateFav.text = dataMovie.releaseDate
             tvOriginTitleFav.text = dataMovie.originalTitle
         }
 
-        holder.itemView.setOnClickListener {
+        holder.binding.btnDeleteFav.setOnClickListener {
             onClickItem?.invoke(dataMovie)
         }
     }

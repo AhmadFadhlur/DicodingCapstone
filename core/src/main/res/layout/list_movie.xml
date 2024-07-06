@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/movieItemCard"
     android:layout_width="match_parent"
     android:layout_height="450dp"
     android:layout_marginStart="36dp"
@@ -30,13 +29,12 @@
             app:riv_corner_radius="20dp" />
 
         <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_poster"
+            android:id="@+id/shimmerPoster"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:shimmer_auto_start="true">
 
             <com.makeramen.roundedimageview.RoundedImageView
-                android:id="@+id/poster_placeholder_shimmer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="poster"
@@ -83,7 +81,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/title" />
 
             <TextView
-                android:id="@+id/tv_date"
+                android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"

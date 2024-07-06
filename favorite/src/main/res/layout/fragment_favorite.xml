@@ -8,25 +8,17 @@
     tools:context=".ui.FavoriteFragment">
 
 
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_todetail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="to detail"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_favMovie"
+        android:id="@+id/rvFavMovie"
         android:layout_width="409dp"
         android:layout_height="729dp"
+        android:layout_margin="16dp"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="8dp"
         tools:listitem="@layout/list_favorite_movie"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

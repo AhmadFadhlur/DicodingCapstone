@@ -18,7 +18,8 @@ import com.bumptech.glide.load.engine.GlideException
 import com.bumptech.glide.request.RequestListener
 import com.bumptech.glide.request.target.Target
 
-class MovieAdapter(var onClickItem: ((ResultMovieItem) -> Unit?)? = null) : PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolder>(callback){
+class MovieAdapter(var onClickItem: ((ResultMovieItem) -> Unit?)? = null) :
+    PagingDataAdapter<ResultMovieItem, MovieAdapter.ViewHolder>(callback){
 
     companion object {
         val callback = object : DiffUtil.ItemCallback<ResultMovieItem>() {
@@ -69,7 +70,6 @@ class MovieAdapter(var onClickItem: ((ResultMovieItem) -> Unit?)? = null) : Pagi
                         shimmerPoster.visibility = GONE
                         return false
                     }
-
                 }
             ).into(imgPoster)
 

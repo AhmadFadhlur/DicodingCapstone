@@ -1,7 +1,7 @@
 package com.ashoka.capstonedicoding.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.NavController
@@ -9,7 +9,6 @@ import androidx.navigation.fragment.NavHostFragment
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.ashoka.capstonedicoding.R
 import com.ashoka.capstonedicoding.databinding.ActivityMainBinding
-import com.ashoka.capstonedicoding.ui.homepage.HomeMoviesFragment
 import com.ashoka.capstonedicoding.utils.False
 import com.ashoka.capstonedicoding.utils.True
 import com.ashoka.capstonedicoding.utils.onNavDestinationSelected

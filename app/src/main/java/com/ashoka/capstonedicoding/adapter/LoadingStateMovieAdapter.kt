@@ -1,5 +1,6 @@
 package com.ashoka.capstonedicoding.adapter
 
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.paging.LoadState
@@ -23,15 +24,14 @@ class LoadingStateMovieAdapter (private val retry : () -> Unit) :
        }
    }
 
-    override fun onBindViewHolder(holder: LoadingStateViewHolder, loadState: LoadState) {
-        TODO("Not yet implemented")
-    }
+    override fun onBindViewHolder(holder: LoadingStateViewHolder, loadState: LoadState) =
+        holder.bind(loadState)
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
         loadState: LoadState
-    ): LoadingStateViewHolder {
-        TODO("Not yet implemented")
-    }
+    ): LoadingStateViewHolder =
+        LoadingStateViewHolder(LoadingStateMovieAdapterBinding.inflate(
+            LayoutInflater.from(parent.context),parent,false),retry)
 }
 

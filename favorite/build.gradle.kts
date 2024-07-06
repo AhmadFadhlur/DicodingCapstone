@@ -2,6 +2,7 @@ plugins {
     id("com.android.dynamic-feature")
     id("org.jetbrains.kotlin.android")
     id("com.google.dagger.hilt.android")
+    id ("androidx.navigation.safeargs")
     id("com.google.devtools.ksp")
 }
 apply(from = "../shared_dependencies.gradle")
@@ -26,11 +27,11 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_18
-        targetCompatibility = JavaVersion.VERSION_18
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "18"
+        jvmTarget = "1.8"
     }
 
     buildFeatures {

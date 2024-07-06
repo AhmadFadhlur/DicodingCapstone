@@ -1,13 +1,36 @@
 package com.ashoka.capstonedicoding.utils
 
 import android.view.View
+import androidx.core.view.WindowCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.WindowInsetsControllerCompat
+import androidx.fragment.app.Fragment
 import androidx.navigation.ActivityNavigator
 import androidx.navigation.NavController
 import androidx.navigation.NavOptions
-import com.ashoka.capstonedicoding.R
 
 fun View.setVisibleOrGone(visible: Boolean) {
     visibility = if (visible) View.VISIBLE else View.GONE
+}
+
+fun behaviorSystemUI(fragment: Fragment, isHide: Boolean = false) {
+    val activity = fragment.requireActivity()
+    WindowCompat.setDecorFitsSystemWindows(activity.window, !isHide)
+    val controller = WindowInsetsControllerCompat(activity.window, fragment.requireView())
+    val typesBar = WindowInsetsCompat.Type.systemBars()
+    val typesNav = WindowInsetsCompat.Type.navigationBars()
+
+    if (isHide) {
+        controller.let {
+            it.hide(typesBar)
+            it.hide(typesNav)
+            it.systemBarsBehavior =
+                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
+        }
+    } else {
+        controller.show(typesBar)
+        controller.show(typesNav)
+    }
 }
 
 fun onNavDestinationSelected(

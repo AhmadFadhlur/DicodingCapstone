@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="poster">poster</string>
     <string name="popularity_d">Popularity : %s</string>
 </resources>

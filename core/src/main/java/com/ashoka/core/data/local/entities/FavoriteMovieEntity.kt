@@ -2,7 +2,6 @@ package com.ashoka.core.data.local.entities
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.ashoka.core.domain.model.GenreMovie
 
 @Entity(tableName = "favoriteMovie")
 data class FavoriteMovieEntity(

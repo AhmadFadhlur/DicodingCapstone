@@ -1,12 +1,12 @@
 package com.ashoka.core.utils
 
 import com.ashoka.core.data.local.entities.FavoriteMovieEntity
-import com.ashoka.core.data.remote.response.MovieDetailResponse
+import com.ashoka.core.data.remote.response.detail.MovieDetailResponse
+import com.ashoka.core.data.remote.response.detail.TvShowsDetailResponse
 import com.ashoka.core.domain.model.DetailMovie
 import com.ashoka.core.domain.model.GenreMovie
 import com.ashoka.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOf
 
 object DataMapper {
@@ -27,6 +27,25 @@ object DataMapper {
             releaseDate = movieDetailResponse.releaseDate!!,
             voteAverage = movieDetailResponse.voteAverage!!.toString(),
             homepage = movieDetailResponse.homepage!!
+        )
+    )
+
+    fun mapDetailResponseTvshowsToDomain(tvShowsDetailResponse: TvShowsDetailResponse)
+    : Flow<DetailMovie> = flowOf(
+        DetailMovie(
+            id = tvShowsDetailResponse.id!!,
+            backdropPath = tvShowsDetailResponse.backdropPath!!,
+            originalTitle = tvShowsDetailResponse.originalName!!,
+            title = tvShowsDetailResponse.name!!,
+            genres = tvShowsDetailResponse.genres!!.map {
+                GenreMovie(it!!.name!!, it.id!!)
+            },
+            popularity = tvShowsDetailResponse.popularity!!.toString(),
+            overview = tvShowsDetailResponse.overview!!,
+            posterPath = tvShowsDetailResponse.posterPath!!,
+            releaseDate = tvShowsDetailResponse.firstAirDate!!,
+            voteAverage = tvShowsDetailResponse.voteAverage!!.toString(),
+            homepage = tvShowsDetailResponse.homepage!!
         )
     )
 

@@ -1,19 +1,14 @@
 package com.ashoka.favorite.ui
 
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
 import com.ashoka.capstonedicoding.di.FavoriteModuleDependencies
 import com.ashoka.core.adapter.FavoriteMovieAdapter
 import com.ashoka.core.domain.model.Movie
-import com.ashoka.core.utils.EndPointMovie.ID_MOVIE
 import com.ashoka.favorite.R
 import com.ashoka.favorite.databinding.FragmentFavoriteBinding
 import com.ashoka.favorite.di.DaggerFavoriteComponent
@@ -50,16 +45,12 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
         setFavMovieAdapter()
         observeFavMovie()
 
-
-        binding.btnTodetail.setOnClickListener {
-            findNavController().navigate(com.ashoka.capstonedicoding.R.id.action_favorite_navigation_to_setting_navigation)
-        }
     }
 
     private fun observeFavMovie(){
         favoriteViewModel.favMovie.observe(viewLifecycleOwner){movie ->
             favMovieAdapter.submitData(movie as ArrayList<Movie>)
-            Log.i("HASIL DB", movie.toString())
+
         }
     }
 
@@ -73,13 +64,7 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
     }
 
     private fun toDetailFrag(movie: Movie){
-        val idBundle = Bundle().apply {
-            putInt(ID_MOVIE, movie.id)
-        }
-        findNavController().navigate(
-            com.ashoka.capstonedicoding.R.id.action_favoriteFragment_to_detailFragment,
-            idBundle
-        )
-        Log.i("toDetailFrag", idBundle.toString())
+        favoriteViewModel.deleteMovie(movie)
+
     }
 }

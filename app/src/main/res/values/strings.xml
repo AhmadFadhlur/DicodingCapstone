@@ -2,8 +2,14 @@
     <string name="app_name">CapstoneDicoding</string>
     <string name="title_favorite">favorite</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="search">Search</string>
     <string name="added_to_collection">Added To Collection</string>
     <string name="add_to_collection">Add to Collection</string>
+    <string name="dummytitle">dummyTitle</string>
+    <string name="dummydate">dummyDate</string>
+    <string name="overview">overview</string>
+    <string name="loremipsum">loremIpsum</string>
+    <string name="release_date">Release Date</string>
+    <string name="dummy_date">dummy date</string>
+    <string name="imgbutton">imgbutton</string>
+    <string name="poster">poster</string>
 </resources>

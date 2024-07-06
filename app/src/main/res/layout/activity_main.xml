@@ -8,7 +8,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostContainer"
-        android:name="androidx.navigation.fragment.NavHostFragment"
+        android:name="androidx.navigation.dynamicfeatures.fragment.DynamicNavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:defaultNavHost="true"
@@ -23,7 +23,7 @@
         android:id="@+id/bubbleTabBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#FFF"
+        android:background="#000000"
         android:elevation="16dp"
         android:padding="7dp"
         app:bubbletab_menuResource="@menu/menu_navigation_home"

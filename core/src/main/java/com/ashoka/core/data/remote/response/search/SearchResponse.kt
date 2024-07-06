@@ -1,8 +1,9 @@
-package com.ashoka.core.data.remote.response
+
+package com.ashoka.core.data.remote.response.search
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDiscoverResponse(
+data class SearchResponse(
 
 	@field:SerializedName("page")
 	val page: Int? = null,
@@ -11,8 +12,9 @@ data class MovieDiscoverResponse(
 	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<ResultMovieItem>? = null,
+	val results: List<ResultsSearchItem>? = null,
 
 	@field:SerializedName("total_results")
 	val totalResults: Int? = null
 )
+

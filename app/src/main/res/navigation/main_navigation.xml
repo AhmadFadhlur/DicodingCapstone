@@ -2,8 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/movie_navigation"
     app:startDestination="@id/home_navigation">
+
 
     <fragment
         android:id="@+id/home_navigation"
@@ -12,47 +12,43 @@
         tools:layout="@layout/fragment_home_movies" >
         <action
             android:id="@+id/action_main_navigation_to_detailMoviesFragment"
-            app:destination="@id/detailMoviesFragment" />
-        <action
-            android:id="@+id/action_main_navigation_to_settingFragment"
-            app:destination="@id/setting_navigation" />
+            app:destination="@id/detailMoviesFragment"
+            app:popUpTo="@id/home_navigation" />
     </fragment>
+
     <fragment
         android:id="@+id/detailMoviesFragment"
         android:name="com.ashoka.capstonedicoding.ui.details.DetailMoviesFragment"
         android:label="fragment_detail_movies"
         tools:layout="@layout/fragment_detail_movies" >
+
         <argument
-            android:name="id"
-            app:argType="integer"
-            android:defaultValue="0" />
-        <argument
-            android:name="name"
+            android:name="idMovie"
             app:argType="string"
             app:nullable="true"
             android:defaultValue="null" />
-    </fragment>
-    <fragment
-        android:id="@+id/setting_navigation"
-        android:name="com.ashoka.capstonedicoding.ui.setting.SettingFragment"
-        android:label="fragment_setting"
-        tools:layout="@layout/fragment_setting" >
         <action
-            android:id="@+id/action_setting_navigation_to_detailMoviesFragment"
-            app:destination="@id/detailMoviesFragment" />
+            android:id="@+id/action_detailMoviesFragment_to_tvShowsFragment"
+            app:destination="@id/tvShows_navigation" />
     </fragment>
-
     <fragment
         android:id="@+id/favorite_navigation"
         android:name="com.ashoka.favorite.ui.FavoriteFragment"
-        android:label="fragment_favorite_movies"
+        android:label="fragment_favorite"
         tools:layout="@layout/fragment_favorite" >
         <action
-            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            android:id="@+id/action_favoriteFragment_to_detailMoviesFragment"
             app:destination="@id/detailMoviesFragment" />
-        <action
-            android:id="@+id/action_favorite_navigation_to_setting_navigation"
-            app:destination="@id/setting_navigation" />
-
     </fragment>
+    <fragment
+        android:id="@+id/tvShows_navigation"
+        android:name="com.ashoka.capstonedicoding.ui.tvshows.TvShowsFragment"
+        android:label="fragment_tv_shows"
+        tools:layout="@layout/fragment_tv_shows" >
+        <action
+            android:id="@+id/action_tvShowsFragment_to_detailMoviesFragment"
+            app:destination="@id/detailMoviesFragment"
+            app:popUpTo="@id/tvShows_navigation" />
+    </fragment>
+
 </navigation>
