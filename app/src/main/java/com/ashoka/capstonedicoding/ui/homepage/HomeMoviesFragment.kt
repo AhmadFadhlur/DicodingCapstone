@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -22,6 +24,7 @@ import com.ashoka.core.utils.EndPointMovie.ID_MOVIE
 import com.ashoka.core.utils.EndPointMovie.TO_DETAIL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
@@ -104,9 +107,12 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
     }
 
     private fun observeSearchQuery() = with(binding){
-        lifecycleScope.launchWhenStarted {
-            homeMoviesViewModel.searchMovies.collectLatest {
-                searchMovieAdapter.submitData(it)
+
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED){
+                homeMoviesViewModel.searchMovies.collectLatest {
+                    searchMovieAdapter.submitData(it)
+                }
             }
         }
     }
@@ -120,9 +126,22 @@ class HomeMoviesFragment : Fragment(R.layout.fragment_home_movies) {
             videoStatus = false,
             language = "en-US",
             sortBy = "popularity.desc")
-        lifecycleScope.launchWhenStarted {
-            homeMoviesViewModel.discoverMovies.collectLatest {movieAdapter.submitData(it)}
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED){
+                homeMoviesViewModel.discoverMovies.collectLatest {movieAdapter.submitData(it)}
+            }
         }
-
     }
+
+    override fun onDestroyView() {
+        binding.rvMoviesHome.adapter = null
+        binding.rvMoviesSearchHome.adapter = null
+        super.onDestroyView()
+    }
+
+//    override fun onDestroy() {
+//        binding.rvMoviesHome.adapter = null
+//        binding.rvMoviesSearchHome.adapter = null
+//        super.onDestroy()
+//    }
 }

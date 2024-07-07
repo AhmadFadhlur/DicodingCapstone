@@ -1,3 +1,4 @@
+import com.android.builder.dexing.isProguardRule
 
 
 plugins {
@@ -23,7 +24,15 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+
+            proguardFiles(
+                getDefaultProguardFile("proguard-android-optimize.txt"),
+                "proguard-rules.pro"
+            )
+        }
+        debug {
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -41,6 +50,7 @@ android {
     buildFeatures {
         viewBinding = true
         buildConfig = true
+        //noinspection DataBindingWithoutKapt
         dataBinding = true
     }
 }

@@ -65,6 +65,14 @@ class FavoriteFragment : Fragment(R.layout.fragment_favorite) {
 
     private fun toDetailFrag(movie: Movie){
         favoriteViewModel.deleteMovie(movie)
-
     }
+
+    override fun onDestroyView() {
+        binding.rvFavMovie.adapter = null
+        super.onDestroyView()
+    }
+//    override fun onDestroy() {
+//        binding.rvFavMovie.adapter = null
+//        super.onDestroy()
+//    }
 }

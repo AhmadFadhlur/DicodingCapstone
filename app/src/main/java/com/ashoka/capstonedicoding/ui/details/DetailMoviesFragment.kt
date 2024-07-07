@@ -162,9 +162,15 @@ class DetailMoviesFragment : Fragment(R.layout.fragment_detail_movies) {
         }
     }
 
+
+
     override fun onResume() {
        behaviorSystemUI(this, true)
         super.onResume()
+    }
+
+    override fun onStop() {
+        super.onStop()
     }
 
 

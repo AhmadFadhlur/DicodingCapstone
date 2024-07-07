@@ -1,6 +1,7 @@
 package com.ashoka.core.data.remote.network
 
 import com.ashoka.core.BuildConfig.DEBUG
+import okhttp3.CertificatePinner
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
@@ -11,6 +12,12 @@ class ApiConfig {
     companion object{
 
         fun getDiscoverApiService(): ApiDiscoverMovieService {
+            val hostname = "developer.themoviedb.org"
+            val certificatePinner = CertificatePinner.Builder()
+                .add(hostname, "sha256/hJdIWBzspbVklOxAKu6uW0gpJVgbNbE9tXjL1G8SRPc=")
+                .add(hostname, "sha256/qR5muP958z7AZJtxWhkevbLZ8po8upR0EXFA3mVPeog=")
+                .add(hostname, "sha256/J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=")
+                .build()
             val level =
                 if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             val loggingInterceptor = HttpLoggingInterceptor().setLevel(level)
@@ -20,6 +27,7 @@ class ApiConfig {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner)
                 .build()
 
             val retrofit = Retrofit.Builder()
@@ -32,6 +40,12 @@ class ApiConfig {
         }
 
         fun getMovieSearchApiService(): ApiSearchMoviesService {
+            val hostname = "developer.themoviedb.org"
+            val certificatePinner = CertificatePinner.Builder()
+                .add(hostname, "sha256/hJdIWBzspbVklOxAKu6uW0gpJVgbNbE9tXjL1G8SRPc=")
+                .add(hostname, "sha256/qR5muP958z7AZJtxWhkevbLZ8po8upR0EXFA3mVPeog=")
+                .add(hostname, "sha256/J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=")
+                .build()
             val level =
                 if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             val loggingInterceptor = HttpLoggingInterceptor().setLevel(level)
@@ -41,6 +55,7 @@ class ApiConfig {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner)
                 .build()
 
             val retrofit = Retrofit.Builder()
@@ -53,6 +68,12 @@ class ApiConfig {
         }
 
         fun getDetailApiService(): ApiDetailMoviesService {
+            val hostname = "developer.themoviedb.org"
+            val certificatePinner = CertificatePinner.Builder()
+                .add(hostname, "sha256/hJdIWBzspbVklOxAKu6uW0gpJVgbNbE9tXjL1G8SRPc=")
+                .add(hostname, "sha256/qR5muP958z7AZJtxWhkevbLZ8po8upR0EXFA3mVPeog=")
+                .add(hostname, "sha256/J2/oqMTsdhFWW/n85tys6b4yDBtb6idZayIEBx7QTxA=")
+                .build()
             val level =
                 if (DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE
             val loggingInterceptor = HttpLoggingInterceptor().setLevel(level)
@@ -62,6 +83,7 @@ class ApiConfig {
                 .connectTimeout(30, TimeUnit.SECONDS)
                 .readTimeout(30, TimeUnit.SECONDS)
                 .writeTimeout(30, TimeUnit.SECONDS)
+                .certificatePinner(certificatePinner)
                 .build()
 
             val retrofit = Retrofit.Builder()

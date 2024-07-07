@@ -5,7 +5,9 @@ import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import by.kirich1409.viewbindingdelegate.viewBinding
@@ -23,6 +25,7 @@ import com.ashoka.core.utils.EndPointMovie.ID_MOVIE
 import com.ashoka.core.utils.EndPointMovie.TO_DETAIL
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class TvShowsFragment : Fragment(R.layout.fragment_tv_shows) {
@@ -110,9 +113,11 @@ class TvShowsFragment : Fragment(R.layout.fragment_tv_shows) {
 
 
     private fun observeSearchQuery() = with(binding){
-        lifecycleScope.launchWhenStarted {
-            tvShowsViewModel.searchTvshows.collectLatest {
-                searchTvshowsAdapter.submitData(it)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED){
+                tvShowsViewModel.searchTvshows.collectLatest {
+                    searchTvshowsAdapter.submitData(it)
+                }
             }
         }
     }
@@ -125,11 +130,20 @@ class TvShowsFragment : Fragment(R.layout.fragment_tv_shows) {
             videoStatus = false,
             language = "en-US",
             sortBy = "popularity.desc")
-        lifecycleScope.launchWhenStarted {
-            tvShowsViewModel.dicoverTvShows.collectLatest {
-                Log.d("collectLatest{", "paging data = $it}")
-                tvShowsAdapter.submitData(it)
+        lifecycleScope.launch {
+            lifecycle.repeatOnLifecycle(Lifecycle.State.RESUMED){
+                tvShowsViewModel.dicoverTvShows.collectLatest {
+                    Log.d("collectLatest{", "paging data = $it}")
+                    tvShowsAdapter.submitData(it)
+                }
             }
         }
+
     }
+
+    override fun onDestroyView() {
+        binding.rvTvShows.adapter = null
+        super.onDestroyView()
+    }
+
 }

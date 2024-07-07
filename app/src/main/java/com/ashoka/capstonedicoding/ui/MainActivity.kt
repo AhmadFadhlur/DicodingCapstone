@@ -39,11 +39,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun navigationChange(fragment: Fragment) {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.navHostContainer, fragment)
-            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-            .commit()
+    override fun onStop() {
+        super.onStop()
     }
 }
